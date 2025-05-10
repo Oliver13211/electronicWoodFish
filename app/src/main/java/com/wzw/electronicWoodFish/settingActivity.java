@@ -14,13 +14,6 @@ public class settingActivity extends AppCompatActivity {
     EditText waitTime;
     Button submit;
     @Override
-    protected void onResume (){
-        super.onResume();
-        if (time!=0){
-            startActivity(new Intent(this,MainActivity.class).putExtra("time",time));
-            Log.d("test2", String.valueOf(time));
-        }
-    }
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_setting_activity, menu);
@@ -39,6 +32,8 @@ public class settingActivity extends AppCompatActivity {
             else{
                 time = Integer.parseInt(waitTime.getText().toString());
                 Toast.makeText(settingActivity.this,"间隔时长设置成功，为"+time,Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,MainActivity.class).putExtra("time",time));
+                Log.d("test2", String.valueOf(time));
             }
         });
     }

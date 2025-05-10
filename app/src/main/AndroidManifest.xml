@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -15,9 +17,13 @@
         android:theme="@style/Theme.ElectronicWoodFish"
         tools:targetApi="31">
         <activity
+            android:name=".aboutActivity"
+            android:exported="false"
+            android:label="关于"/>
+        <activity
             android:name=".settingActivity"
             android:exported="false"
-            android:label="设置"/>
+            android:label="设置" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
