@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("SetTextI18n")
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.autoStart){
             isClicking = true;
@@ -126,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, settingActivity.class));
         } else if (item.getItemId()==R.id.about) {
             startActivity(new Intent(MainActivity.this,aboutActivity.class));
+        } else if (item.getItemId()==R.id.del) {
+            count = 0;
+            num.setText("当前功德："+count);
         }
         return super.onOptionsItemSelected(item);
     }

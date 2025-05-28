@@ -35,6 +35,10 @@
                 android:icon="@drawable/about"
                 android:title="关于"
                 tools:ignore="HardcodedText" />
+            <item
+                android:id="@+id/del"
+                android:icon="@drawable/del"
+                android:title="清零功德" />
         </menu>
     </item>
 </menu>
