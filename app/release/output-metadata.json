@@ -12,8 +12,8 @@
       "filters": [],
       "attributes": [],
       "versionCode": 1,
-      "versionName": "2.0",
-      "outputFile": "electronicWoodFish_release_v2.0_2025_05_14_20_47_04.apk"
+      "versionName": "2.1",
+      "outputFile": "electronicWoodFish_release_v2.1_2025_05_28_21_06_31.apk"
     }
   ],
   "elementType": "File",
@@ -22,14 +22,14 @@
       "minApi": 28,
       "maxApi": 30,
       "baselineProfiles": [
-        "baselineProfiles/1/electronicWoodFish_release_v2.0_2025_05_14_20_47_04.dm"
+        "baselineProfiles/1/electronicWoodFish_release_v2.1_2025_05_28_21_06_31.dm"
       ]
     },
     {
       "minApi": 31,
       "maxApi": 2147483647,
       "baselineProfiles": [
-        "baselineProfiles/0/electronicWoodFish_release_v2.0_2025_05_14_20_47_04.dm"
+        "baselineProfiles/0/electronicWoodFish_release_v2.1_2025_05_28_21_06_31.dm"
       ]
     }
   ],

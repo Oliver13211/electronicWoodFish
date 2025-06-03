@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     TextView autoStyle;
     ImageView woodFish;
     TextView num;
+    Menu _menu;
     /** @noinspection deprecation*/
     @SuppressLint("HandlerLeak")
     private final Handler handler = new Handler() {
@@ -65,9 +66,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main_activity, menu);
+        _menu = menu;
+        _menu.findItem(R.id.autoStop).setEnabled(false);
+        _menu.findItem(R.id.del).setEnabled(false);
         return super.onCreateOptionsMenu(menu);
     }
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "MissingInflatedId"})
     protected void onCreate(Bundle savedInstanceState) {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         vibrator = (Vibrator)this.getSystemService(VIBRATOR_SERVICE);
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         autoStyle = findViewById(R.id.autoText);
         woodFish = findViewById(R.id.woodFish);
         num = findViewById(R.id.num);
-        woodFish.setOnClickListener(v -> {Toast.makeText(this,"功德+1",Toast.LENGTH_SHORT).show();count++;num.setText("当前功德："+count);mMediaPlayer.start();vibrator.vibrate(100);});
+        woodFish.setOnClickListener(v -> {_menu.findItem(R.id.del).setEnabled(true);Toast.makeText(this,"功德+1",Toast.LENGTH_SHORT).show();count++;num.setText("当前功德："+count);mMediaPlayer.start();vibrator.vibrate(100);});
     }
     private final SensorEventListener sensorEventListener = new SensorEventListener() {
 
@@ -118,10 +122,14 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId()==R.id.autoStart){
             isClicking = true;
             autoStyle.setText("自动点击：开启");
+            _menu.findItem(R.id.autoStart).setEnabled(false);
+            _menu.findItem(R.id.autoStop).setEnabled(true);
             handler.post(clickRunnable);
         } else if (item.getItemId()==R.id.autoStop) {
             isClicking = false;
             autoStyle.setText("自动点击：关闭");
+            _menu.findItem(R.id.autoStart).setEnabled(true);
+            _menu.findItem(R.id.autoStop).setEnabled(false);
             handler.removeCallbacks(clickRunnable);
         } else if (item.getItemId()==R.id.setting) {
             startActivity(new Intent(MainActivity.this, settingActivity.class));
@@ -130,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId()==R.id.del) {
             count = 0;
             num.setText("当前功德："+count);
+            _menu.findItem(R.id.del).setEnabled(false);
         }
         return super.onOptionsItemSelected(item);
     }
